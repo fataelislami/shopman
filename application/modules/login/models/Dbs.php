@@ -12,4 +12,16 @@ class Dbs extends CI_Model{
   function check($table,$where){
 		return $this->db->get_where($table,$where);
 	}
+
+  function getEmailuser($table,$email){
+  		$dml="SELECT * FROM $table where email='$email'";
+  		$query=$this->db->query($dml);
+  		return $query;
+  }	
+
+      function ubahpasswordUser($table,$email,$data){
+        $this->db->set($data);
+        $this->db->where('email', $email);
+        $this->db->update($table);
+    }
 }

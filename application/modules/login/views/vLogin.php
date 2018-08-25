@@ -69,7 +69,7 @@ echo "<script>alert('$flashMessage')</script>";
           </div>
         </div>
       </form>
-      <form class="form-horizontal" method="post" id="recoverform" action="<?php echo base_url()?>login/reset">
+      <form class="form-horizontal" method="post" id="recoverform" action="<?php echo base_url()?>login/lupaPassword_act">
         <div class="form-group ">
           <div class="col-xs-12">
             <h3>Kembalikan Password</h3>

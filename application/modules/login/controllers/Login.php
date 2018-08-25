@@ -17,20 +17,34 @@ class Login extends MY_Controller{
 
   function auth(){//Proses pengecekan login
     $username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$where = array(
-			'username' => $username,
-			'password' => md5($password)
-			);
-		$sql = $this->Dbs->check("user",$where);//ubah user menjadi nama table user didatabase saat ini
-    $check=$sql->num_rows();
-		if($check > 0){
-      //Kalo login berhasil eksekusi disini
+    $password = $this->input->post('password');
+    $where = array(
+      'email' => $username,
+      'password' => md5($password)
+      );
+    $sql = $this->Dbs->check("superadmin",$where);//ubah user menjadi nama table user didatabase saat ini
+    $check = $sql->num_rows();
+    $sql2 = $this->Dbs->check("admin",$where);
+    $check2 = $sql2->num_rows();
+    if ($check > 0) {
+      echo "Halo Superadmin";
+    }
+    else if ($check2 > 0) {
+      echo "Halo Admin";
+    }
+    else{
+       $this->session->set_flashdata('flashMessage', 'Username dan Password Salah');
+       redirect(base_url('login'));
+     }
 
-		}else{
-      $this->session->set_flashdata('flashMessage', 'Username dan Password Salah');
-      redirect(base_url('login'));
-		}
+  //   $check=$sql->num_rows();
+    // if($check > 0){
+  //     //Kalo login berhasil eksekusi disini
+
+    // }else{
+  //     $this->session->set_flashdata('flashMessage', 'Username dan Password Salah');
+  //     redirect(base_url('login'));
+    // }
   }
 
 
@@ -68,6 +82,43 @@ $this->email->message($isi);
 $this->email->set_mailtype('html');
 $this->email->send();
 }
+
+  function LupaPassword(){
+    $this->load->view('vForgotpasword');
+  }
+
+  function lupaPassword_act(){
+    $email = $this->input->post('email');
+    $cekemailuser = $this->Dbs->getEmailuser("superadmin",$email);
+    $cekemailuser2 = $this->Dbs->getEmailuser("admin",$email);
+    $cek=$cekemailuser->num_rows();
+    $cek2=$cekemailuser2->num_rows();
+
+    if ($cek>0) {
+        $get=$cekemailuser->row();
+        $length=8;
+        $passwordBaru = $this->randomPassword($length);
+        $data['password'] = md5($passwordBaru);
+        $this->Dbs->ubahpasswordUser('superadmin',$email,$data);
+        $this->email("Info Akun","Password Baru Anda : ".$passwordBaru,$email);
+        $this->session->set_flashdata('flashMessage', 'Password baru telah terkirim,silahkan cek email anda');
+        redirect(base_url('login'));
+
+    } else if ($cek2>0) {
+        $get=$cekemailuser2->row();
+        $length=8;
+        $passwordBaru = $this->randomPassword($length);
+        $data['password'] = md5($passwordBaru);
+        $this->email("Info Akun","Password Baru Anda : ".$passwordBaru,$email);
+        $this->session->set_flashdata('flashMessage', 'Password baru telah terkirim,silahkan cek email anda');
+        redirect(base_url('login'));
+    } else {
+      $this->session->set_flashdata('flashMessage', 'Email yang anda masukan belum pernah didaftarkan');
+      redirect(base_url('login'));
+    }
+
+
+  }
 
   function logout(){
 		$this->session->sess_destroy();
