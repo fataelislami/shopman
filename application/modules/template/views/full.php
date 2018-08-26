@@ -229,6 +229,11 @@
     <script src="<?php echo base_url()?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo base_url()?>js/custom.min.js"></script>
+    <!--validation JavaScript -->
+    <script src="<?php echo base_url()?>js/jqBootstrapValidation.js"></script>
+    <script>
+      $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+    </script>
     <!-- PAGE PLUGIN -->
     <?php if(isset($script)){$this->load->view($script);} ?>
 
