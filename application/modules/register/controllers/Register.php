@@ -27,9 +27,9 @@ class Register extends MY_Controller{
     $cek2=$cekemailuser2->num_rows();
 
     if ($cek > 0) {
-     echo "<script type='text/javascript'>alert('Akun berhasil dibuat'); document.location='http://localhost/shopman2/register' </script>";
+     echo "<script type='text/javascript'>alert('Maaf Email Sudah Terdaftar'); document.location='http://localhost/shopman2/register' </script>";
     }else if ($cek2 > 0){
-     echo "<script type='text/javascript'>alert('Akun berhasil dibuat'); document.location='http://localhost/shopman2/register' </script>";
+     echo "<script type='text/javascript'>alert('Maaf Email Sudah Terdaftar'); document.location='http://localhost/shopman2/register' </script>";
     } else {
       $data=array(
         'email' => $email,
