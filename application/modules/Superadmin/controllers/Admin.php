@@ -64,20 +64,21 @@ class Admin extends MY_Controller
     public function create_action()
     {
         $this->_rules();
+        $now = date('Y-m-d');
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
         $data = array(
-      		'email' => $this->input->post('email',TRUE),
-      		'password' => md5($this->input->post('password',TRUE)),
-      		'name' => $this->input->post('name',TRUE),
-      		'address' => $this->input->post('address',TRUE),
-      		'store_title' => $this->input->post('store_title',TRUE),
-      		'date' => $this->input->post('date',TRUE),
-      		'regist_date' => $this->input->post('regist_date',TRUE),
-      		'expire_date' => $this->input->post('expire_date',TRUE),
-      		'id_superadmin' => NULL,
+          'email' => $this->input->post('email',TRUE),
+          'password' => md5($this->input->post('password',TRUE)),
+          'name' => $this->input->post('name',TRUE),
+          'address' => $this->input->post('address',TRUE),
+          'store_title' => $this->input->post('store_title',TRUE),
+          'date' => $now,
+          'regist_date' => NULL,
+          'expire_date' => NULL,
+          'id_superadmin' => NULL,
 	    );
 
             $this->Admin_model->insert($data);
@@ -129,18 +130,18 @@ class Admin extends MY_Controller
 
     public function _rules()
     {
-	$this->form_validation->set_rules('email', 'email', 'trim|required');
-	$this->form_validation->set_rules('password', 'password', 'trim|required');
-	$this->form_validation->set_rules('name', 'name', 'trim|required');
-	$this->form_validation->set_rules('address', 'address', 'trim|required');
-	$this->form_validation->set_rules('store_title', 'store title', 'trim|required');
-	$this->form_validation->set_rules('date', 'date', 'trim|required');
-	$this->form_validation->set_rules('regist_date', 'regist date', 'trim|required');
-	$this->form_validation->set_rules('expire_date', 'expire date', 'trim|required');
-	$this->form_validation->set_rules('id_superadmin', 'id superadmin', 'trim|required');
+      	$this->form_validation->set_rules('email', 'email', 'trim|required');
+      	$this->form_validation->set_rules('password', 'password', 'trim|required');
+      	$this->form_validation->set_rules('name', 'name', 'trim|required');
+      	$this->form_validation->set_rules('address', 'address', 'trim|required');
+      	$this->form_validation->set_rules('store_title', 'store title', 'trim|required');
+      	#$this->form_validation->set_rules('date', 'date', 'trim|required');
+      	#$this->form_validation->set_rules('regist_date', 'regist date', 'trim|required');
+      	#$this->form_validation->set_rules('expire_date', 'expire date', 'trim|required');
+      	#$this->form_validation->set_rules('id_superadmin', 'id superadmin', 'trim|required');
 
-	$this->form_validation->set_rules('id_admin', 'id_admin', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+      	$this->form_validation->set_rules('id_admin', 'id_admin', 'trim');
+      	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
 }

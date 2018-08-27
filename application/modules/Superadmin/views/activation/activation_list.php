@@ -4,12 +4,22 @@
             <div class="card-body">
               <div class="row">
                   <div class="col-md-6">
-                      <h4 class="card-title">Data Admin</h4>
+                      <h4 class="card-title">Aktivasi Admin Olshop</h4>
                       <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                   </div>
                   <div class="col-md-6 text-right">
-                      <?php echo anchor(site_url($module.'/admin/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
-      	    </div>
+                    <!--/span-->
+                        <div class="form-group">
+                            <label>Filter</label>
+                            <select class="form-control custom-select">
+                                <option>--Select your Filter Option--</option>
+                                <option>ALL</option>
+                                <option>Active</option>
+                                <option>Non Active</option>
+                            </select>
+                        </div>
+                    <!--/span-->
+      	          </div>
               </div>
 
 
@@ -20,6 +30,7 @@
                               <th>ID</th>
                               <th>Nama</th>
                               <th>Toko</th>
+                              <th>Status</th>
                               <th>ACT</th>
                             </tr>
                         </thead>
@@ -28,7 +39,17 @@
                             <tr>
                                 <td width="5%"><?php echo $d->id_admin ?></td>
                                 <td width="20%"><?php echo $d->name ?></td>
-                                <td width="55%"><?php echo $d->store_title ?></td>
+                                <td width="45%"><?php echo $d->store_title ?></td>
+                                <td witdh="10%">
+                                  <?php
+                                    if ($d->id_superadmin == null) {
+                                      echo "Nonaktif";
+                                    } else {
+                                      echo "Active";
+                                    }
+                                  ?>
+
+                                </td>
                                 <td width="20%">
                                     <!-- modal -->
                                     <button type="button" class="btn btn-primary waves-effect waves-light m-r-10" data-toggle="modal" data-target="#exampleModal<?php echo $d->id_admin ?>" data-whatever="@mdo">Detail</button>
@@ -79,10 +100,6 @@
                                                                           <label>Expire Date</label>
                                                                           <input type="text" name="expire_date" class="form-control" value="<?php echo $d->expire_date?>" readonly>
                                                                   </div>
-                                                                  <div class="form-group">
-                                                                          <label>Nama Superadmin</label>
-                                                                          <input type="text" name="id_superadmin" class="form-control" value="<?php echo $d->name2?>" readonly>
-                                                                  </div>
                                                           </div>
                                                       </div>
                                                     </div>
@@ -97,37 +114,64 @@
                                         </div>
                                     </div>
                                     <!-- /.modal -->
-                                    <a href="<?php echo base_url().$module?>/admin/edit/<?php echo $d->id_admin ?>">
-                                        <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
-                                    </a>
 
-                                    <!-- Tombol Hapus -->
-                                    <button class="btn btn-danger waves-effect waves-light m-r-10" data-toggle="modal" data-target="#myDelete<?php echo $d->id_admin?>">Delete</button>
-                                    <!-- sample modal activation content -->
-                                    <div id="myDelete<?php echo $d->id_admin?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Pesan</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h4>Anda Yakin akan menghapus akun dengan nama <?php echo $d->name?></h4>
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <a href="<?php echo base_url().$module?>/admin/delete/<?php echo $d->id_admin ?>">
-                                                    <button type="button" class="btn btn-info waves-effect">OK</button>
-                                                  </a>
-                                                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
-                                    <!-- end tombol hapus -->
+                                    <?php if ($d->id_superadmin == null): ?>
 
+                                      <!-- Aktivasi dan deaktivasi -->
+                                      <button class="btn btn-success waves-effect waves-light m-r-10" data-toggle="modal" data-target="#myActivation<?php echo $d->id_admin?>">Aktivasi</button>
+                                      <!-- sample modal activation content -->
+                                      <div id="myActivation<?php echo $d->id_admin?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h4 class="modal-title" id="myModalLabel">Pesan</h4>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      <h4>Anda Yakin akan aktivasi akun dengan nama <?php echo $d->name?></h4>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <a href="<?php echo base_url().$module?>/activation/activation/<?php echo $d->id_admin ?>">
+                                                      <button type="button" class="btn btn-info waves-effect">OK</button>
+                                                    </a>
+                                                      <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+                                                  </div>
+                                              </div>
+                                              <!-- /.modal-content -->
+                                          </div>
+                                          <!-- /.modal-dialog -->
+                                      </div>
+                                      <!-- /.modal -->
+
+                                    <?php else: ?>
+
+                                      <button class="btn btn-danger waves-effect waves-light m-r-10" data-toggle="modal" data-target="#myDeactivation<?php echo $d->id_admin?>">Deaktivasi</button>
+                                      <!-- sample modal deakctivation content -->
+                                      <div id="myDeactivation<?php echo $d->id_admin?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h4 class="modal-title" id="myModalLabel">Pesan</h4>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      <h4>Anda Yakin akan deaktivasi akun dengan nama <?php echo $d->name?></h4>  </div>
+                                                  <div class="modal-footer">
+                                                    <a href="<?php echo base_url().$module?>/activation/deactivation/<?php echo $d->id_admin ?>">
+                                                      <button type="button" class="btn btn-info waves-effect">OK</button>
+                                                    </a>
+                                                      <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+                                                  </div>
+                                              </div>
+                                              <!-- /.modal-content -->
+                                          </div>
+                                          <!-- /.modal-dialog -->
+                                      </div>
+                                      <!-- /.modal -->
+
+                                    <?php endif; ?>
+
+                                  <!-- end aktivasi dan deaktivasi -->
                                 </td>
                             </tr>
                           <?php endforeach; ?>
