@@ -24,6 +24,7 @@ class Admin_model extends CI_Model
         //return $this->db->get($this->table)->result();
     }
 
+    // get all super admin
     function get_all_superadmin(){
       $this->db->order_by('id_superadmin', $this->order);
       return $this->db->get('superadmin')->result();
