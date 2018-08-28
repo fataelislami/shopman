@@ -3,12 +3,30 @@
         <li class="nav-small-cap">Menu</li>
         <!-- //BATAS SATU MENU -->
         <li>
-            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home</span></a>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin"><i class="mdi mdi-home"></i><span class="hide-menu">Home</span></a>
         </li>
         <!-- //BATAS SATU MENU -->
-
-
-
+        <!-- //BATAS SATU MENU -->
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/category"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Category</span></a>
+        </li>
+        <!-- //BATAS SATU MENU -->
+        <!-- //BATAS SATU MENU -->
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/product"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Product</span></a>
+        </li>
+        <!-- //BATAS SATU MENU -->
+        <!-- //BATAS SATU MENU -->
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/payment_method"><i class="mdi mdi-cash-multiple"></i><span class="hide-menu">Payment Method</span></a>
+        </li>
+        <!-- //BATAS SATU MENU -->
+        <!-- //BATAS SATU MENU -->
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/confirmation"><i class="mdi mdi-ticket-confirmation"></i><span class="hide-menu">Confirm</span></a>
+        </li>
+        <!-- //BATAS SATU MENU -->
+        
         <!-- <li>
         CONTOH MENU DENGAN SUBMENU
             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-pencil"></i><span class="hide-menu">Tulisan</span></a>
