@@ -33,18 +33,30 @@ class Activation extends MY_Controller
 
     public function activation($id){
       $di_admin   = $id;
-      $superadmin = '2'; //isi super admin disini
+      $admin = $this->Activation_model->get_by_id($id);
+      $superadmin = '4'; //isi super admin disini
 
-      $row = $this->Activation_model->get_by_id($id);
+      if ($admin) {
+        //cek jika admin sudah pernah melakukan registrasi
+        //dan masih mempunyai masa aktif botchat
+        if (($admin->expire_date != '0000-00-00') && ($admin->regist_date < $admin->expire_date)) {
+            $this->Activation_model->activation_old($id,$superadmin);
+        } else {
+            $this->Activation_model->activation_new($id,$superadmin);
+        }
 
-      if ($row) {
-        $this->Activation_model->activation($id,$superadmin);
+
         $this->session->set_flashdata('message', 'Activaion Record Success');
         redirect(site_url('superadmin/activation'));
       } else {
           $this->session->set_flashdata('message', 'Record Not Found');
           redirect(site_url('superadmin/activation'));
       }
+
+
+      $row = $this->Activation_model->get_by_id($id);
+
+
     }
 
     public function deactivation($id){
@@ -54,7 +66,7 @@ class Activation extends MY_Controller
       $row = $this->Activation_model->get_by_id($id);
 
       if ($row) {
-        $this->Activation_model->activation($id,$superadmin);
+        $this->Activation_model->deactivation($id,$superadmin);
         $this->session->set_flashdata('message', 'Deactivaion Record Success');
         redirect(site_url('superadmin/activation'));
       } else {

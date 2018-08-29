@@ -17,13 +17,22 @@ class Activation_model extends CI_Model
 
     function get_all()
     {
-        #SELECT * FROM admin WHERE id_superadmin IS NULL ORDER BY date ASC
         $this->db->order_by($this->id, 'ASC');
         return $this->db->get($this->table)->result();
     }
 
-    function activation($id,$super){
-        $query = "UPDATE admin SET id_superadmin = $super WHERE id_admin = $id";
+    function Activation_New($id,$super){
+        $query = "UPDATE admin SET regist_date = NOW(), `expire_date` = NOW() + INTERVAL 3 MONTH, id_superadmin = $super WHERE id_admin = $id";
+        return $this->db->query($query);
+    }
+
+    function Activation_Old($id,$super){
+        $query = "UPDATE admin SET regist_date = NOW(), `expire_date` = DATE_ADD(`expire_date`,INTERVAL +3 MONTH), id_superadmin = $super WHERE id_admin = $id";
+        return $this->db->query($query);
+    }
+
+    function deactivation($id,$super){
+        $query = "UPDATE admin SET regist_date = NULL, `expire_date` = NULL, id_superadmin = NULL WHERE id_admin = $id";
         return $this->db->query($query);
     }
 

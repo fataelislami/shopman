@@ -14,7 +14,7 @@
     </div>
 	  <div class="form-group">
             <label>password</label>
-            <input type="text" name="password" class="form-control" value="<?php echo $dataedit->password?>">
+            <input type="text" name="password" class="form-control" value="" placeholder="Masukan password Baru">
     </div>
 	  <div class="form-group">
             <label>email</label>
@@ -24,7 +24,7 @@
             <label>name</label>
             <input type="text" name="name" class="form-control" value="<?php echo $dataedit->name?>">
     </div>
-	
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>

@@ -39,7 +39,7 @@
                             <tr>
                                 <td width="5%"><?php echo $d->id_admin ?></td>
                                 <td width="20%"><?php echo $d->name ?></td>
-                                <td width="45%"><?php echo $d->store_title ?></td>
+                                <td width="40%"><?php echo $d->store_title ?></td>
                                 <td witdh="10%">
                                   <?php
                                     if ($d->id_superadmin == null) {
@@ -50,7 +50,7 @@
                                   ?>
 
                                 </td>
-                                <td width="20%">
+                                <td width="25%">
                                     <!-- modal -->
                                     <button type="button" class="btn btn-primary waves-effect waves-light m-r-10" data-toggle="modal" data-target="#exampleModal<?php echo $d->id_admin ?>" data-whatever="@mdo">Detail</button>
                                     <div class="modal fade bs-example-modal-lg" id="exampleModal<?php echo $d->id_admin ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -67,39 +67,33 @@
                                                     <div class="col-12">
                                                       <div class="card">
                                                           <div class="card-body">
-
-                                                                  <div class="form-group">
-                                                                          <label>ID</label>
-                                                                          <input type="text" name="id_admin" class="form-control" placeholder="" value="<?php echo $d->id_admin?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Email</label>
-                                                                          <input type="text" name="email" class="form-control" value="<?php echo $d->email?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Nama</label>
-                                                                          <input type="text" name="name" class="form-control" value="<?php echo $d->name?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Alamat</label>
-                                                                          <input type="text" name="address" class="form-control" value="<?php echo $d->address?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Toko</label>
-                                                                          <input type="text" name="store_title" class="form-control" value="<?php echo $d->store_title?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Tanggal Bergabung</label>
-                                                                          <input type="text" name="date" class="form-control" value="<?php echo $d->date?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Tanggal Regist</label>
-                                                                          <input type="text" name="regist_date" class="form-control" value="<?php echo $d->regist_date?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Expire Date</label>
-                                                                          <input type="text" name="expire_date" class="form-control" value="<?php echo $d->expire_date?>" readonly>
-                                                                  </div>
+                                                            <table width="100%">
+                                                              <tr>
+                                                                <td width="30%">ID</td>
+                                                                <td><?php echo $d->id_admin?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Email</td><td><?php echo $d->email?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Nama</td><td><?php echo $d->name?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Alamat</td><td><?php echo $d->address?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Nama Toko</td><td><?php echo $d->store_title?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Tgl Bergabung</td><td><?php echo $d->date?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Tgl Registrasi</td><td><?php echo $d->regist_date?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Tgl Expire</td><td><?php echo $d->expire_date?></td>
+                                                              </tr>
+                                                            </table>
                                                           </div>
                                                       </div>
                                                     </div>
@@ -144,6 +138,32 @@
                                       <!-- /.modal -->
 
                                     <?php else: ?>
+
+                                      <!-- Aktivasi dan deaktivasi -->
+                                      <button class="btn btn-success waves-effect waves-light m-r-10" data-toggle="modal" data-target="#myActivation<?php echo $d->id_admin?>">Perpanjang</button>
+                                      <!-- sample modal activation content -->
+                                      <div id="myActivation<?php echo $d->id_admin?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h4 class="modal-title" id="myModalLabel">Pesan</h4>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      <h4>Anda Yakin akan aktivasi akun dengan nama <?php echo $d->name?></h4>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <a href="<?php echo base_url().$module?>/activation/activation/<?php echo $d->id_admin ?>">
+                                                      <button type="button" class="btn btn-info waves-effect">OK</button>
+                                                    </a>
+                                                      <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+                                                  </div>
+                                              </div>
+                                              <!-- /.modal-content -->
+                                          </div>
+                                          <!-- /.modal-dialog -->
+                                      </div>
+                                      <!-- /.modal -->
 
                                       <button class="btn btn-danger waves-effect waves-light m-r-10" data-toggle="modal" data-target="#myDeactivation<?php echo $d->id_admin?>">Deaktivasi</button>
                                       <!-- sample modal deakctivation content -->

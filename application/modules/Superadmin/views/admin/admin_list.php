@@ -46,43 +46,36 @@
                                                     <div class="col-12">
                                                       <div class="card">
                                                           <div class="card-body">
-
-                                                                  <div class="form-group">
-                                                                          <label>ID</label>
-                                                                          <input type="text" name="id_admin" class="form-control" placeholder="" value="<?php echo $d->id_admin?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Email</label>
-                                                                          <input type="text" name="email" class="form-control" value="<?php echo $d->email?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Nama</label>
-                                                                          <input type="text" name="name" class="form-control" value="<?php echo $d->name?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Alamat</label>
-                                                                          <input type="text" name="address" class="form-control" value="<?php echo $d->address?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Toko</label>
-                                                                          <input type="text" name="store_title" class="form-control" value="<?php echo $d->store_title?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Tanggal Bergabung</label>
-                                                                          <input type="text" name="date" class="form-control" value="<?php echo $d->date?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Tanggal Regist</label>
-                                                                          <input type="text" name="regist_date" class="form-control" value="<?php echo $d->regist_date?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Expire Date</label>
-                                                                          <input type="text" name="expire_date" class="form-control" value="<?php echo $d->expire_date?>" readonly>
-                                                                  </div>
-                                                                  <div class="form-group">
-                                                                          <label>Nama Superadmin</label>
-                                                                          <input type="text" name="id_superadmin" class="form-control" value="<?php echo $d->name2?>" readonly>
-                                                                  </div>
+                                                            <table width="100%">
+                                                              <tr>
+                                                                <td width="30%">ID</td>
+                                                                <td><?php echo $d->id_admin?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Email</td><td><?php echo $d->email?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Nama</td><td><?php echo $d->name?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Alamat</td><td><?php echo $d->address?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Nama Toko</td><td><?php echo $d->store_title?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Tgl Bergabung</td><td><?php echo $d->date?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Tgl Registrasi</td><td><?php echo $d->regist_date?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Tgl Expire</td><td><?php echo $d->expire_date?></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>Nama SuperAdmin</td><td><?php echo $d->name2?></td>
+                                                              </tr>
+                                                            </table>
                                                           </div>
                                                       </div>
                                                     </div>
@@ -91,7 +84,10 @@
 
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                  <a href="<?php echo base_url().$module?>/admin/edit/<?php echo $d->id_admin ?>">
+                                                      <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
+                                                  </a>
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
                                         </div>

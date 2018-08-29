@@ -26,7 +26,7 @@ class Admin extends MY_Controller
         'dataadmin'=>$dataadmin,
         'datafield'=>$datafield,
         'module'=>'superadmin',
-        'titlePage'=>'admin'
+        'titlePage'=>'Admin Olshop'
        );
       $this->template->load($data);
     }
@@ -96,6 +96,18 @@ class Admin extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->edit($this->input->post('id_admin', TRUE));
         } else {
+          if ($this->input->post('password') == '') {
+            $data = array(
+        		'email' => $this->input->post('email',TRUE),
+        		'name' => $this->input->post('name',TRUE),
+        		'address' => $this->input->post('address',TRUE),
+        		'store_title' => $this->input->post('store_title',TRUE),
+        		'date' => $this->input->post('date',TRUE),
+        		'regist_date' => $this->input->post('regist_date',TRUE),
+        		'expire_date' => $this->input->post('expire_date',TRUE),
+        		'id_superadmin' => $this->input->post('id_superadmin',TRUE),
+            );
+          }  else {
             $data = array(
         		'email' => $this->input->post('email',TRUE),
         		'password' => md5($this->input->post('password',TRUE)),
@@ -106,7 +118,9 @@ class Admin extends MY_Controller
         		'regist_date' => $this->input->post('regist_date',TRUE),
         		'expire_date' => $this->input->post('expire_date',TRUE),
         		'id_superadmin' => $this->input->post('id_superadmin',TRUE),
-	    );
+            );
+          }
+
 
             $this->Admin_model->update($this->input->post('id_admin', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -131,7 +145,7 @@ class Admin extends MY_Controller
     public function _rules()
     {
       	$this->form_validation->set_rules('email', 'email', 'trim|required');
-      	$this->form_validation->set_rules('password', 'password', 'trim|required');
+      	#$this->form_validation->set_rules('password', 'password', 'trim|required');
       	$this->form_validation->set_rules('name', 'name', 'trim|required');
       	$this->form_validation->set_rules('address', 'address', 'trim|required');
       	$this->form_validation->set_rules('store_title', 'store title', 'trim|required');

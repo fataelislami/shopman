@@ -88,12 +88,21 @@ class Akun extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->edit($this->input->post('id_superadmin', TRUE));
         } else {
+          if ($this->input->post('password') == '') {
+            $data = array(
+        		'username' => $this->input->post('username',TRUE),
+        		'email' => $this->input->post('email',TRUE),
+        		'name' => $this->input->post('name',TRUE),
+        	    );
+          } else {
             $data = array(
         		'username' => $this->input->post('username',TRUE),
         		'password' => md5($this->input->post('password',TRUE)),
         		'email' => $this->input->post('email',TRUE),
         		'name' => $this->input->post('name',TRUE),
         	    );
+          }
+
 
             $this->Akun_model->update($this->input->post('id_superadmin', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -117,13 +126,13 @@ class Akun extends MY_Controller
 
     public function _rules()
     {
-	$this->form_validation->set_rules('username', 'username', 'trim|required');
-	$this->form_validation->set_rules('password', 'password', 'trim|required');
-	$this->form_validation->set_rules('email', 'email', 'trim|required');
-	$this->form_validation->set_rules('name', 'name', 'trim|required');
+    	$this->form_validation->set_rules('username', 'username', 'trim|required');
+    	#$this->form_validation->set_rules('password', 'password', 'trim|required');
+    	$this->form_validation->set_rules('email', 'email', 'trim|required');
+    	$this->form_validation->set_rules('name', 'name', 'trim|required');
 
-	$this->form_validation->set_rules('id_superadmin', 'id_superadmin', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    	$this->form_validation->set_rules('id_superadmin', 'id_superadmin', 'trim');
+    	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
 }

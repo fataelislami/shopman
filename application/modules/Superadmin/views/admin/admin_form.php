@@ -16,14 +16,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                           <label>Password</label>
-                          <input type="text" name="password" class="form-control" placeholder="" required>
+                          <input type="password" id="password" name="password" class="form-control" placeholder="" required>
                   </div>
                 </div>
                 <!--/span-->
                 <div class="col-md-6">
                   <div class="form-group">
                           <label>Retype Password</label>
-                          <input type="text" name="password2" class="form-control" placeholder="" required>
+                          <input type="password" class="form-control" data-validation-matches-match="email" data-validation-matches-message="Must match email address entered above"  required>
                   </div>
                 </div>
                 <!--/span-->
