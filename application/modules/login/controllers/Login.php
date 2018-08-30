@@ -27,10 +27,37 @@ class Login extends MY_Controller{
     $sql2 = $this->Dbs->check("admin",$where);
     $check2 = $sql2->num_rows();
     if ($check > 0) {
-      echo "Halo Superadmin";
+      $get=$sql->row();
+      $id_superadmin=$get->id_superadmin;
+      $name=$get->name;
+      $level='superadmin';
+      $data_session = array(//Data yang akan disimpan kedalam session
+				'username' => $username,
+        'name'=>$name,
+				'status' => "login",
+        'level'=>$level,
+        'id'=>$id_superadmin
+				);
+			$this->session->set_userdata($data_session);
+      redirect(site_url($level));
+      // Cara Memanggil Session
+      // $this->session->userdata('status');  << contoh ketika memanggil isi nilai dari array status, output=login
+      // $this->session->userdata('id'); << isi nilai id pada session, jika superadmin maka akan muncul id_superadmi
     }
     else if ($check2 > 0) {
-      echo "Halo Admin";
+      $get=$sql->row();
+      $id_admin=$get->id_admin;
+      $name=$get->name;
+      $level='admin';
+      $data_session = array(//Data yang akan disimpan kedalam session
+				'username' => $username,
+        'name'=>$name,
+				'status' => "login",
+        'level'=>$level,
+        'id'=>$id_admin
+				);
+			$this->session->set_userdata($data_session);
+      redirect(site_url($level));
     }
     else{
        $this->session->set_flashdata('flashMessage', 'Username dan Password Salah');
