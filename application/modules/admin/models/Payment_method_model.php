@@ -16,10 +16,16 @@ class Payment_method_model extends CI_Model
     }
 
     // get all
-    function get_all()
+    function get_all($id=null)
     {
         $this->db->order_by($this->id, $this->order);
-        return $this->db->get($this->table)->result();
+        if($id!=null){
+          $this->db->where('id_admin', $id);
+          return $this->db->get($this->table)->result();
+
+        }else{
+          return $this->db->get($this->table)->result();
+        }
     }
 
     //get field

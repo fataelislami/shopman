@@ -29,7 +29,7 @@
             <input type="text" name="size" class="form-control" value="<?php echo $dataedit->size?>">
     </div>
 	  <div class="form-group">
-            <label>photo</label>
+            <label>url_photo</label>
             <input type="text" name="url_photo" class="form-control" value="<?php echo $dataedit->url_photo?>">
     </div>
 	  <div class="form-group">
@@ -40,9 +40,15 @@
             <label>stock</label>
             <input type="text" name="stock" class="form-control" value="<?php echo $dataedit->stock?>">
     </div>
-	  <div class="form-group">
-            <label>id_category</label>
-            <input type="text" name="id_category" class="form-control" value="<?php echo $dataedit->id_category?>">
+    <div class="form-group">
+            <label>Kategori</label>
+            <select class="form-control custom-select" name="id_category" required>
+              <?php foreach ($category as $c):?>
+                <option value="<?php echo $c->id_category ?>" <?php if($dataedit->id_category==$c->id_category){echo "selected";} ?>>
+                  <?php echo $c->name ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
     </div>
 
                 <div class="form-group">
@@ -52,4 +58,17 @@
         </div>
     </div>
   </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Upload Foto Produk</h4>
+                <h6 class="card-subtitle">Tarik Gambar atau Pilih Beberapa Gambar</h6>
+                <form action="<?php echo base_url()?>admin/upload/proses" class="dropzone">
+                </form>
+                <button id="aplot" type="button" name="button">Upload</button>
+            </div>
+        </div>
+    </div>
 </div>

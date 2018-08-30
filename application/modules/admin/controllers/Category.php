@@ -21,7 +21,7 @@ class Category extends MY_Controller
     public function index()
     {
 
-      $datacategory=$this->Category_model->get_all();//panggil ke modell
+      $datacategory=$this->Category_model->get_all($this->session->userdata('id'));//panggil ke modell
       $datafield=$this->Category_model->get_field();//panggil ke modell
 
       $data = array(

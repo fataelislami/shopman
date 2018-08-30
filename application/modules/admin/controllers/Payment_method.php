@@ -21,7 +21,7 @@ class Payment_method extends MY_Controller
     public function index()
     {
 
-      $datapayment_method=$this->Payment_method_model->get_all();//panggil ke modell
+      $datapayment_method=$this->Payment_method_model->get_all($this->session->userdata('id'));//panggil ke modell
       $datafield=$this->Payment_method_model->get_field();//panggil ke modell
 
       $data = array(

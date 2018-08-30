@@ -1541,3 +1541,123 @@ DEBUG - 2018-08-30 06:58:40 --> Session: "sess_save_path" is empty; using "sessi
 ERROR - 2018-08-30 06:58:40 --> 404 Page Not Found: /index
 DEBUG - 2018-08-30 06:58:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 ERROR - 2018-08-30 06:58:40 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:03:59 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:03:59 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:04:16 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:04:16 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:04:59 --> 404 Page Not Found: ../modules/admin/controllers/Admin/proses
+ERROR - 2018-08-30 07:04:59 --> 404 Page Not Found: ../modules/admin/controllers/Admin/proses
+ERROR - 2018-08-30 07:06:00 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:06:00 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:31:33 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:31:33 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:31:58 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:31:59 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:32:29 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:32:29 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:32:43 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:32:44 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:38:00 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 07:38:00 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:02:55 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:02:55 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:03:46 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:03:46 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:04:34 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:04:34 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:08:56 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:08:56 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:08:56 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:01 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:01 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:05 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:05 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:08 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:08 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:40 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:09:40 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:12 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:12 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:31 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:31 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:39 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:39 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:43 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:43 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:45 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:10:45 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:11:07 --> Severity: Notice --> Undefined variable: files /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/controllers/Product.php 84
+ERROR - 2018-08-30 16:11:07 --> Severity: Error --> Method name must be a string /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/controllers/Product.php 84
+ERROR - 2018-08-30 16:11:34 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:11:34 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:16:20 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:16:20 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:16:24 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:16:24 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:16:49 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:16:49 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:03 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:03 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:07 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:08 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:10 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:10 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:42 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:42 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:18:45 --> Severity: Parsing Error --> syntax error, unexpected '}', expecting ',' or ';' /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/views/product/product_edit.php 47
+ERROR - 2018-08-30 16:18:45 --> Severity: Parsing Error --> syntax error, unexpected '}', expecting ',' or ';' /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/views/product/product_edit.php 47
+ERROR - 2018-08-30 16:18:45 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:19:17 --> Severity: Parsing Error --> syntax error, unexpected '}', expecting ',' or ';' /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/views/product/product_edit.php 47
+ERROR - 2018-08-30 16:19:18 --> Severity: Parsing Error --> syntax error, unexpected '}', expecting ',' or ';' /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/views/product/product_edit.php 47
+ERROR - 2018-08-30 16:19:18 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:20:12 --> Severity: Parsing Error --> syntax error, unexpected '}', expecting ',' or ';' /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/views/product/product_edit.php 47
+ERROR - 2018-08-30 16:20:13 --> Severity: Parsing Error --> syntax error, unexpected '}', expecting ',' or ';' /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/views/product/product_edit.php 47
+ERROR - 2018-08-30 16:20:13 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:21:16 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:21:16 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:21:33 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:21:33 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:22:06 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:22:06 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:24:43 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:24:43 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:29:49 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:29:49 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:30:23 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:30:24 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:34:42 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:34:42 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:35:28 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:35:28 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:36:23 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:36:23 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:36:55 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:36:55 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:37:59 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:37:59 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:38:32 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:38:32 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:39:22 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:39:22 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:42:27 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:42:27 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:43:14 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:43:15 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:43:44 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:43:44 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:44:20 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:44:20 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:45:05 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:45:05 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:48:44 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:48:44 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:50:04 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:50:04 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:50:51 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:50:51 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:51:09 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 16:51:09 --> 404 Page Not Found: /index
+ERROR - 2018-08-30 17:05:45 --> Severity: Error --> Call to undefined method Dbs::getId() /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/controllers/Product.php 96
+ERROR - 2018-08-30 17:06:10 --> Severity: Error --> Call to undefined function size() /Applications/XAMPP/xamppfiles/htdocs/shopman/application/modules/admin/controllers/Product.php 99
+ERROR - 2018-08-30 17:07:36 --> Query error: Cannot delete or update a parent row: a foreign key constraint fails (`u6545471_shopman`.`image`, CONSTRAINT `image_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`)) - Invalid query: DELETE FROM `product`
+WHERE `id_product` = '6'

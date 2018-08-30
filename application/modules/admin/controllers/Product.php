@@ -9,7 +9,7 @@ class Product extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Product_model');
-        $this->load->model(array('Product_model','Dbs'));
+        $this->load->model(array('Dbs'));
         $this->load->library('form_validation');
         if($this->session->userdata('status')!='login'){//cek kalo status tidak login
           redirect(base_url('login'));
@@ -22,7 +22,7 @@ class Product extends MY_Controller
     public function index()
     {
 
-      $dataproduct=$this->Product_model->get_all();//panggil ke modell
+      $dataproduct=$this->Product_model->get_all($this->session->userdata('id'));//panggil ke modell
       $datafield=$this->Product_model->get_field();//panggil ke modell
 
       $data = array(
@@ -32,8 +32,7 @@ class Product extends MY_Controller
         'script'=>'admin/crudassets/script',
         'dataproduct'=>$dataproduct,
         'datafield'=>$datafield,
-        'module'=>'admin',
-        'titlePage'=>'product'
+        'module'=>'admin'
        );
       $this->template->load($data);
     }
@@ -54,6 +53,7 @@ class Product extends MY_Controller
     }
 
     public function edit($id){
+      $getCategory=$this->Dbs->getwhere('id_admin',$this->session->userdata('id'),'category')->result();
       $dataedit=$this->Product_model->get_by_id($id);
       $data = array(
         'contain_view' => 'admin/product/product_edit',
@@ -62,7 +62,7 @@ class Product extends MY_Controller
         'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'admin/product/update_action',
         'dataedit'=>$dataedit,
-        'titlePage'=>'Product'
+        'category'=>$getCategory
        );
       $this->template->load($data);
     }
@@ -81,48 +81,31 @@ class Product extends MY_Controller
 		'price' => $this->input->post('price',TRUE),
 		'description' => $this->input->post('description',TRUE),
 		'size' => $this->input->post('size',TRUE),
-		'url_photo' => $this->input->$files('url_photo',TRUE),
+		'url_photo' => $this->input->post('url_photo',TRUE),
 		'discount' => $this->input->post('discount',TRUE),
 		'stock' => $this->input->post('stock',TRUE),
 		'id_category' => $this->input->post('id_category',TRUE),
 		'id_admin' => $this->session->userdata('id'),
 	    );
 
-            $this->Product_model->insert($data);
-           //  //upload gambar
-           //              if(!empty($files['files']['name'])){
-           //          $filesCount = count($files['files']['name']);
-           //          for($i = 0; $i < $filesCount; $i++){
-           //              $files['file']['name']     = $files['files']['name'][$i];
-           //              $files['file']['type']     = $files['files']['type'][$i];
-           //              $files['file']['tmp_name'] = $files['files']['tmp_name'][$i];
-           //              $files['file']['error']     = $files['files']['error'][$i];
-           //              $files['file']['size']     = $files['files']['size'][$i];
+            $sql=$this->Product_model->boolInsert($data);
+            if($sql){
 
-           //              // File upload configuration
-           //              $uploadPath = 'uploads/files/';
-           //              $config['upload_path'] = $uploadPath;
-           //              $config['allowed_types'] = 'jpg|jpeg|png|gif';
-           //              $config['encrypt_name'] = TRUE;
+            }
+            if(isset($_POST['filename'])){
+              $id_product=$this->Product_model->getId()->id_product;
+              $filename=$this->input->post('filename');
+              $arrFilename=explode(",",$filename);
+              for($i=0;$i<count($arrFilename);$i++){
+                $dataFoto=array(
+                  'name'=>$arrFilename[$i],
+                  'id_product'=>$id_product
+                );
+                $this->Dbs->insert($dataFoto,'image');
+              }
+            }
 
-           //              // Load and initialize upload library
-           //              $this->load->library('upload', $config);
-           //              $this->upload->initialize($config);
 
-           //              // Upload file to server
-           //              if($this->upload->do_upload('file')){
-           //                  // Uploaded file data
-           //                  $fileData = $this->upload->data();
-           //                  $uploadData[$i]['name'] = $fileData['file_name'];
-           //                  $uploadData[$i]['id_product'] = $id_product;
-           //              }
-           //          }
-
-           //          if(!empty($uploadData)){
-           //              // Insert files data into the database
-           //              $insert = $this->Dbs->insert_gambar($uploadData);
-           //          }
-           //      }
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('admin/product'));
         }
@@ -180,7 +163,6 @@ class Product extends MY_Controller
 	$this->form_validation->set_rules('discount', 'discount', 'trim|required');
 	$this->form_validation->set_rules('stock', 'stock', 'trim|required');
 	$this->form_validation->set_rules('id_category', 'id category', 'trim|required');
-	// $this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
 
 	$this->form_validation->set_rules('id_product', 'id_product', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

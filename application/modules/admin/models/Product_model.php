@@ -16,10 +16,16 @@ class Product_model extends CI_Model
     }
 
     // get all
-    function get_all()
+    function get_all($id=null)
     {
         $this->db->order_by($this->id, $this->order);
-        return $this->db->get($this->table)->result();
+        if($id!=null){
+          $this->db->where('id_admin', $id);
+          return $this->db->get($this->table)->result();
+
+        }else{
+          return $this->db->get($this->table)->result();
+        }
     }
 
     //get field
@@ -75,6 +81,20 @@ class Product_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
 
+    function boolInsert($data){//sama seperti fungsi insert namun memakai return value untuk menentukan berhasil atau tidak
+      $this->db->insert($this->table, $data);
+      if ($this->db->affected_rows()>0) {
+     return true;
+     }else{
+     return false;
+     }
+    }
+
+    function getId(){//mengambil id_product terbaru
+    $this->db->order_by('id_product', 'DESC');
+    $db=$this->db->get($this->table)->row();
+    return $db;
+  }
     // update data
     function update($id, $data)
     {
@@ -97,7 +117,7 @@ class Product_model extends CI_Model
     function getctr($idctr){
         $this->db->where($this->id_category,$idctr);
         return $this->db->get($this->category)->row();
-    }    
+    }
 }
 
 /* End of file Product_model.php */

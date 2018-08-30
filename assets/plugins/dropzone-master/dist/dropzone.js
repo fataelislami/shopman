@@ -1013,6 +1013,14 @@
     Dropzone.prototype.enqueueFile = function(file) {
       if (file.status === Dropzone.ADDED && file.accepted === true) {
         file.status = Dropzone.QUEUED;
+        var fileName='';
+        var myDropzone = Dropzone.forElement(".dropzone");
+        for(var i=0;i<myDropzone.files.length;i++){
+          // console.log(myDropzone.files[i].name);
+          fileName=fileName+','+myDropzone.files[i].name;
+        }
+        $("#filename").val(fileName.substr(1));
+        // console.log(myDropzone.files);
         if (this.options.autoProcessQueue) {
           return setTimeout(((function(_this) {
             return function() {
@@ -1024,7 +1032,7 @@
         throw new Error("This file can't be queued because it has already been processed or was rejected.");
       }
     };
-    
+
     Dropzone.prototype._thumbnailQueue = [];
 
     Dropzone.prototype._processingThumbnail = false;
