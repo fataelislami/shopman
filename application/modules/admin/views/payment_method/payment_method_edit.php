@@ -20,11 +20,8 @@
             <label>account_name</label>
             <input type="text" name="account_name" class="form-control" value="<?php echo $dataedit->account_name?>">
     </div>
-	  <div class="form-group">
-            <label>id_admin</label>
-            <input type="text" name="id_admin" class="form-control" value="<?php echo $dataedit->id_admin?>">
-    </div>
-	
+
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>

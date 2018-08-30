@@ -16,12 +16,8 @@
             <label>id_payment</label>
             <input type="text" name="id_payment" class="form-control" placeholder="">
     </div>
-	  <div class="form-group">
-            <label>id_admin</label>
-            <input type="text" name="id_admin" class="form-control" placeholder="">
-    </div>
-	    <input type="hidden" name="id_confirmation" /> 
-	
+	    <input type="hidden" name="id_confirmation" />
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>
