@@ -10,6 +10,12 @@ class Akun extends MY_Controller
         parent::__construct();
         $this->load->model('Akun_model');
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('level')!='superadmin'){//cek kalo level user tidak sama kaya nama modul
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()

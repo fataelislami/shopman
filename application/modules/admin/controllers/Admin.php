@@ -8,12 +8,12 @@ class Admin extends MY_Controller{
     parent::__construct();
     //Codeigniter : Write Less Do More
     $this->load->model(array('Dbs'));
-    // if($this->session->userdata('status')!='login'){
-    //   redirect(base_url('login'));
-    // }
-    // if($this->session->userdata('role')!=1){
-    //   redirect(redirect($_SERVER['HTTP_REFERER']));
-    // }
+    if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+      redirect(base_url('login'));
+    }
+    if($this->session->userdata('level')!='admin'){//cek kalo level user tidak sama kaya nama modul
+      redirect(redirect($_SERVER['HTTP_REFERER']));
+    }
   }
 
   function index()

@@ -10,6 +10,12 @@ class Payment_method extends MY_Controller
         parent::__construct();
         $this->load->model('Payment_method_model');
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('level')!='admin'){//cek kalo level user tidak sama kaya nama modul
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()
@@ -70,7 +76,7 @@ class Payment_method extends MY_Controller
 		'bank_name' => $this->input->post('bank_name',TRUE),
 		'account_number' => $this->input->post('account_number',TRUE),
 		'account_name' => $this->input->post('account_name',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
+		'id_admin' => $this->session->userdata('id'),
 	    );
 
             $this->Payment_method_model->insert($data);
@@ -92,7 +98,7 @@ class Payment_method extends MY_Controller
 		'bank_name' => $this->input->post('bank_name',TRUE),
 		'account_number' => $this->input->post('account_number',TRUE),
 		'account_name' => $this->input->post('account_name',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
+		'id_admin' => $this->session->userdata('id');,
 	    );
 
             $this->Payment_method_model->update($this->input->post('id_payment_method', TRUE), $data);
@@ -120,7 +126,6 @@ class Payment_method extends MY_Controller
 	$this->form_validation->set_rules('bank_name', 'bank name', 'trim|required');
 	$this->form_validation->set_rules('account_number', 'account number', 'trim|required');
 	$this->form_validation->set_rules('account_name', 'account name', 'trim|required');
-	$this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
 
 	$this->form_validation->set_rules('id_payment_method', 'id_payment_method', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

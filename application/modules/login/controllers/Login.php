@@ -45,7 +45,7 @@ class Login extends MY_Controller{
       // $this->session->userdata('id'); << isi nilai id pada session, jika superadmin maka akan muncul id_superadmi
     }
     else if ($check2 > 0) {
-      $get=$sql->row();
+      $get=$sql2->row();
       $id_admin=$get->id_admin;
       $name=$get->name;
       $level='admin';

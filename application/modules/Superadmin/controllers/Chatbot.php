@@ -10,6 +10,12 @@ class Chatbot extends MY_Controller
         parent::__construct();
         $this->load->model('Chatbot_model');
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('level')!='superadmin'){//cek kalo level user tidak sama kaya nama modul
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()
@@ -72,7 +78,7 @@ class Chatbot extends MY_Controller
 		'secret_token' => $this->input->post('secret_token',TRUE),
 		'expire_token' => $this->input->post('expire_token',TRUE),
 		'id_admin' => $this->input->post('id_admin',TRUE),
-		'id_superadmin' => $this->input->post('id_superadmin',TRUE),
+		'id_superadmin' => $this->session->userdata('id'),//ngambil id superadmin dari session
 	    );
 
             $this->Chatbot_model->insert($data);
@@ -96,7 +102,7 @@ class Chatbot extends MY_Controller
 		'secret_token' => $this->input->post('secret_token',TRUE),
 		'expire_token' => $this->input->post('expire_token',TRUE),
 		'id_admin' => $this->input->post('id_admin',TRUE),
-		'id_superadmin' => $this->input->post('id_superadmin',TRUE),
+    'id_superadmin' => $this->session->userdata('id'),//ngambil id superadmin dari session
 	    );
 
             $this->Chatbot_model->update($this->input->post('id_chatbot', TRUE), $data);
@@ -126,7 +132,6 @@ class Chatbot extends MY_Controller
 	$this->form_validation->set_rules('secret_token', 'secret token', 'trim|required');
 	$this->form_validation->set_rules('expire_token', 'expire token', 'trim|required');
 	$this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
-	$this->form_validation->set_rules('id_superadmin', 'id superadmin', 'trim|required');
 
 	$this->form_validation->set_rules('id_chatbot', 'id_chatbot', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

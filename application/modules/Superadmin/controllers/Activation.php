@@ -10,6 +10,12 @@ class Activation extends MY_Controller
         parent::__construct();
         $this->load->model('Activation_model');
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('level')!='superadmin'){//cek kalo level user tidak sama kaya nama modul
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()
@@ -34,7 +40,7 @@ class Activation extends MY_Controller
     public function activation($id){
       $di_admin   = $id;
       $admin = $this->Activation_model->get_by_id($id);
-      $superadmin = '4'; //isi super admin disini
+      $superadmin = $this->session->userdata('id');; //isi super admin disini
 
       if ($admin) {
         //cek jika admin sudah pernah melakukan registrasi

@@ -10,6 +10,12 @@ class Product extends MY_Controller
         parent::__construct();
         $this->load->model('Product_model');
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('level')!='admin'){//cek kalo level user tidak sama kaya nama modul
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()
@@ -76,7 +82,7 @@ class Product extends MY_Controller
 		'discount' => $this->input->post('discount',TRUE),
 		'stock' => $this->input->post('stock',TRUE),
 		'id_category' => $this->input->post('id_category',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
+		'id_admin' => $this->session->userdata('id'),
 	    );
 
             $this->Product_model->insert($data);
@@ -113,7 +119,7 @@ class Product extends MY_Controller
            //              // Insert files data into the database
            //              $insert = $this->Dbs->insert_gambar($uploadData);
            //          }
-           //      } 
+           //      }
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('admin/product'));
         }
@@ -138,7 +144,7 @@ class Product extends MY_Controller
 		'discount' => $this->input->post('discount',TRUE),
 		'stock' => $this->input->post('stock',TRUE),
 		'id_category' => $this->input->post('id_category',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
+		'id_admin' => $this->session->userdata('id'),
 	    );
 
             $this->Product_model->update($this->input->post('id_product', TRUE), $data);
@@ -172,7 +178,7 @@ class Product extends MY_Controller
 	$this->form_validation->set_rules('discount', 'discount', 'trim|required');
 	$this->form_validation->set_rules('stock', 'stock', 'trim|required');
 	$this->form_validation->set_rules('id_category', 'id category', 'trim|required');
-	$this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
+	// $this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
 
 	$this->form_validation->set_rules('id_product', 'id_product', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

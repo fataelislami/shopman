@@ -10,6 +10,12 @@ class Category extends MY_Controller
         parent::__construct();
         $this->load->model('Category_model');
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){//cek kalo status tidak login
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('level')!='admin'){//cek kalo level user tidak sama kaya nama modul
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()
@@ -70,7 +76,7 @@ class Category extends MY_Controller
         } else {
             $data = array(
 		'name' => $this->input->post('name',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
+		'id_admin' => $this->session->userdata('id'),
 	    );
 
             $this->Category_model->insert($data);
@@ -90,7 +96,7 @@ class Category extends MY_Controller
         } else {
             $data = array(
 		'name' => $this->input->post('name',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
+		'id_admin' => $this->session->userdata('id'),
 	    );
 
             $this->Category_model->update($this->input->post('id_category', TRUE), $data);
@@ -116,7 +122,6 @@ class Category extends MY_Controller
     public function _rules()
     {
 	$this->form_validation->set_rules('name', 'name', 'trim|required');
-	$this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
 
 	$this->form_validation->set_rules('id_category', 'id_category', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
