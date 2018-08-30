@@ -85,3 +85,10 @@ $('#example23').DataTable({
     ]
 });
 </script>
+<script src="<?php echo base_url()?>assets/plugins/dropzone-master/dist/dropzone.js"></script>
+<script type="text/javascript">
+$('#aplot').click(function() {
+    var myDropzone = Dropzone.forElement(".dropzone");
+    myDropzone.processQueue();
+});
+</script>

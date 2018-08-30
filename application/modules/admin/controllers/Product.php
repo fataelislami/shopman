@@ -9,6 +9,7 @@ class Product extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Product_model');
+        $this->load->model(array('Product_model','Dbs'));
         $this->load->library('form_validation');
         if($this->session->userdata('status')!='login'){//cek kalo status tidak login
           redirect(base_url('login'));
@@ -39,13 +40,15 @@ class Product extends MY_Controller
 
 
     public function create(){
+      $getCategory=$this->Dbs->getwhere('id_admin',$this->session->userdata('id'),'category')->result();
       $data = array(
         'contain_view' => 'admin/product/product_form',
         'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
         'css'=>'admin/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
         'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'admin/product/create_action',
-        'titlePage'=>'Product'
+        'titlePage'=>'Product',
+        'category'=>$getCategory
        );
       $this->template->load($data);
     }
@@ -174,7 +177,6 @@ class Product extends MY_Controller
 	$this->form_validation->set_rules('price', 'price', 'trim|required');
 	$this->form_validation->set_rules('description', 'description', 'trim|required');
 	$this->form_validation->set_rules('size', 'size', 'trim|required');
-	$this->form_validation->set_rules('url_photo', 'url photo', 'trim|required');
 	$this->form_validation->set_rules('discount', 'discount', 'trim|required');
 	$this->form_validation->set_rules('stock', 'stock', 'trim|required');
 	$this->form_validation->set_rules('id_category', 'id category', 'trim|required');
