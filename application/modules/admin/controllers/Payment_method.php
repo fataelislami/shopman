@@ -98,7 +98,7 @@ class Payment_method extends MY_Controller
 		'bank_name' => $this->input->post('bank_name',TRUE),
 		'account_number' => $this->input->post('account_number',TRUE),
 		'account_name' => $this->input->post('account_name',TRUE),
-		'id_admin' => $this->session->userdata('id');,
+		'id_admin' => $this->session->userdata('id'),
 	    );
 
             $this->Payment_method_model->update($this->input->post('id_payment_method', TRUE), $data);
