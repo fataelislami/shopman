@@ -1,5 +1,5 @@
-<?php if($this->session->flashdata('flashMessage')) {
-  $flashMessage=$this->session->flashdata('flashMessage');
+<?php if($this->session->flashdata('message')) {
+  $flashMessage=$this->session->flashdata('message');
 echo "<script>alert('$flashMessage')</script>";
  } ?>
 <?php if ($getImage->num_rows()>0){ ?>

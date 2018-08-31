@@ -1,3 +1,7 @@
+<?php if($this->session->flashdata('message')) {
+  $flashMessage=$this->session->flashdata('message');
+echo "<script>alert('$flashMessage')</script>";
+ } ?>
 <div class="row">
     <div class="col-12">
         <div class="card">

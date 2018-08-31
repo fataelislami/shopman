@@ -149,7 +149,7 @@ class Product extends MY_Controller
       }
 
             $this->Product_model->update($this->input->post('id_product', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', 'Update Produk Berhasil');
             redirect(site_url('admin/product'));
         }
     }
