@@ -40,6 +40,12 @@ class Product_model extends CI_Model
         return $this->db->get($this->table)->row();
     }
 
+    function get_image_by($id)
+    {
+        $this->db->where('id_img', $id);
+        return $this->db->get('image')->row();
+    }
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id_product', $q);
@@ -107,6 +113,12 @@ class Product_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    function deleteImg($id)
+    {
+        $this->db->where('id_img', $id);
+        $this->db->delete('image');
     }
 
      function getadm($idadm){

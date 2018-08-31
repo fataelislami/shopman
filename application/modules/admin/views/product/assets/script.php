@@ -1,4 +1,4 @@
-<script src="<?php echo base_url()?>assets/plugins/summernote/dist/summernote.min.js"></script>
+<!-- <script src="<?php echo base_url()?>assets/plugins/summernote/dist/summernote.min.js"></script> -->
 
 <!-- Sweet-Alert  -->
 <script src="<?php echo base_url()?>assets/plugins/sweetalert/sweetalert.min.js"></script>
@@ -85,6 +85,8 @@ $('#example23').DataTable({
     ]
 });
 </script>
+
+
 <script src="<?php echo base_url()?>assets/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/dropzone-master/dist/dropzone.js"></script>

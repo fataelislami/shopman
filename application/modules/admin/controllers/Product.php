@@ -28,8 +28,8 @@ class Product extends MY_Controller
       $data = array(
         'contain_view' => 'admin/product/product_list',
         'sidebar'=>'admin/sidebar',
-        'css'=>'admin/crudassets/css',
-        'script'=>'admin/crudassets/script',
+        'css'=>'admin/product/assets/css',
+        'script'=>'admin/product/assets/script',
         'dataproduct'=>$dataproduct,
         'datafield'=>$datafield,
         'module'=>'admin'
@@ -43,8 +43,8 @@ class Product extends MY_Controller
       $data = array(
         'contain_view' => 'admin/product/product_form',
         'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
-        'css'=>'admin/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
-        'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'css'=>'admin/product/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+        'script'=>'admin/product/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'admin/product/create_action',
         'titlePage'=>'Product',
         'category'=>$getCategory
@@ -54,15 +54,18 @@ class Product extends MY_Controller
 
     public function edit($id){
       $getCategory=$this->Dbs->getwhere('id_admin',$this->session->userdata('id'),'category')->result();
+      $getImage=$this->Dbs->getwhere('id_product',$id,'image');
+
       $dataedit=$this->Product_model->get_by_id($id);
       $data = array(
         'contain_view' => 'admin/product/product_edit',
         'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
-        'css'=>'admin/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
-        'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'css'=>'admin/product/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+        'script'=>'admin/product/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'admin/product/update_action',
         'dataedit'=>$dataedit,
-        'category'=>$getCategory
+        'category'=>$getCategory,
+        'getImage'=>$getImage
        );
       $this->template->load($data);
     }
@@ -132,6 +135,18 @@ class Product extends MY_Controller
 		'id_category' => $this->input->post('id_category',TRUE),
 		'id_admin' => $this->session->userdata('id'),
 	    );
+      if(isset($_POST['filename'])){//pengecekan jika terdapat file foto
+        $id_product=$this->input->post('id_product', TRUE);
+        $filename=$this->input->post('filename');//mengambil nama file dari input type hidden
+        $arrFilename=explode(",",$filename);//dipecah menjadi array
+        for($i=0;$i<count($arrFilename);$i++){
+          $dataFoto=array(
+            'name'=>$arrFilename[$i],
+            'id_product'=>$id_product
+          );
+          $this->Dbs->insert($dataFoto,'image');
+        }
+      }
 
             $this->Product_model->update($this->input->post('id_product', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -151,6 +166,20 @@ class Product extends MY_Controller
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('admin/product'));
         }
+    }
+
+    function imageDelete($id){
+      $row = $this->Product_model->get_image_by($id);
+
+      if ($row) {
+          unlink('xfile/products/'.$row->name);//menghapus file
+          $this->Product_model->deleteImg($id);//menghapus value di database berdasarkan img_id
+          $this->session->set_flashdata('message', 'Delete Sukses');
+          redirect($_SERVER['HTTP_REFERER']);
+      } else {
+          $this->session->set_flashdata('message', 'Record Not Found');
+          redirect($_SERVER['HTTP_REFERER']);
+      }
     }
 
     public function _rules()
