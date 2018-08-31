@@ -31,7 +31,7 @@ class Upload extends MY_Controller{
   }
 
   public function upload_foto($formname){
-    $config['upload_path']          = './xfile/products';
+    $config['upload_path']          = './xfile/products';//target folder simpan
     $config['allowed_types']        = 'gif|jpg|png|jpeg';
     $config['overwrite'] = TRUE;
     $config['encrypt_name'] = FALSE;
@@ -41,7 +41,14 @@ class Upload extends MY_Controller{
     $this->load->library('upload', $config);
     $this->upload->do_upload($formname);
     return $this->upload->data();
-
+    /*Cara penggunaan
+    $this->upload_foto({ubah dengan name dari input type dari view});
+    contoh
+    jika <input type="file" name="file">
+    maka
+    $file=$this->upload_foto('file');
+    untuk mengambil nama file gunakan $file['file_name'];
+    */
     }
 
 }

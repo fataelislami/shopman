@@ -22,7 +22,7 @@ class Product extends MY_Controller
     public function index()
     {
 
-      $dataproduct=$this->Product_model->get_all($this->session->userdata('id'));//panggil ke modell
+      $dataproduct=$this->Product_model->get_all($this->session->userdata('id'),'id_admin');//panggil ke modell
       $datafield=$this->Product_model->get_field();//panggil ke modell
 
       $data = array(

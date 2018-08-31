@@ -15,12 +15,12 @@ class Product_model extends CI_Model
         parent::__construct();
     }
 
-    // get all
-    function get_all($id=null)
+    // get all jika akan mengambil semua database, gunakan parameter jika ingin mengambil nilai tertentu
+    function get_all($id=null,$where=null)
     {
         $this->db->order_by($this->id, $this->order);
-        if($id!=null){
-          $this->db->where('id_admin', $id);
+        if($id!=null && $where!=null){
+          $this->db->where($where, $id);
           return $this->db->get($this->table)->result();
 
         }else{
