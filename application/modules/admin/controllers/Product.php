@@ -95,7 +95,7 @@ class Product extends MY_Controller
             if($sql){
 
             }
-            if(isset($_POST['filename'])){
+            if($_POST['filename'] != ''){
               $id_product=$this->Product_model->getId()->id_product;
               $filename=$this->input->post('filename');
               $arrFilename=explode(",",$filename);
@@ -124,18 +124,18 @@ class Product extends MY_Controller
             $this->edit($this->input->post('id_product', TRUE));
         } else {
             $data = array(
-		'code_product' => $this->input->post('code_product',TRUE),
-		'name' => $this->input->post('name',TRUE),
-		'price' => $this->input->post('price',TRUE),
-		'description' => $this->input->post('description',TRUE),
-		'size' => $this->input->post('size',TRUE),
-		'url_photo' => $this->input->post('url_photo',TRUE),
-		'discount' => $this->input->post('discount',TRUE),
-		'stock' => $this->input->post('stock',TRUE),
-		'id_category' => $this->input->post('id_category',TRUE),
-		'id_admin' => $this->session->userdata('id'),
+        		'code_product' => $this->input->post('code_product',TRUE),
+        		'name' => $this->input->post('name',TRUE),
+        		'price' => $this->input->post('price',TRUE),
+        		'description' => $this->input->post('description',TRUE),
+        		'size' => $this->input->post('size',TRUE),
+        		'url_photo' => $this->input->post('url_photo',TRUE),
+        		'discount' => $this->input->post('discount',TRUE),
+        		'stock' => $this->input->post('stock',TRUE),
+        		'id_category' => $this->input->post('id_category',TRUE),
+        		'id_admin' => $this->session->userdata('id'),
 	    );
-      if(isset($_POST['filename'])){//pengecekan jika terdapat file foto
+      if(($_POST['filename'] != '')){//pengecekan jika terdapat file foto
         $id_product=$this->input->post('id_product', TRUE);
         $filename=$this->input->post('filename');//mengambil nama file dari input type hidden
         $arrFilename=explode(",",$filename);//dipecah menjadi array
