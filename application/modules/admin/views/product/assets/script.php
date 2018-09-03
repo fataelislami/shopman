@@ -89,6 +89,18 @@ $('#example23').DataTable({
 
 <script src="<?php echo base_url()?>assets/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+<script type="text/javascript">
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+  var randomString=makeid();
+</script>
 <script src="<?php echo base_url()?>assets/plugins/dropzone-master/dist/dropzone.js"></script>
 <script type="text/javascript">
 $('#aplot').click(function() {

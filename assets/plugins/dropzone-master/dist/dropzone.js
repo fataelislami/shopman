@@ -723,7 +723,7 @@
 
     Dropzone.prototype._renameFilename = function(name) {
       if (typeof this.options.renameFilename !== "function") {
-        return name;
+        return randomString+name;
       }
       return this.options.renameFilename(name);
     };
@@ -1016,8 +1016,8 @@
         var fileName='';
         var myDropzone = Dropzone.forElement(".dropzone");
         for(var i=0;i<myDropzone.files.length;i++){
-          // console.log(myDropzone.files[i].name);
-          fileName=fileName+','+myDropzone.files[i].name;
+          fileName=fileName+','+randomString+myDropzone.files[i].name;
+          // console.log(fileName);
         }
         $("#filename").val(fileName.substr(1));
         // console.log(myDropzone.files);

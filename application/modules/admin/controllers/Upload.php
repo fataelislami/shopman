@@ -22,7 +22,7 @@ class Upload extends MY_Controller{
     $this->template->load($data);
   }
 
-  function proses(){
+  function proses(){//menerima proses dari dropzone
 
     if (!empty($_FILES)) {
       $this->upload_foto('file');
