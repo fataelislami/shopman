@@ -45,7 +45,7 @@ class Akun extends MY_Controller
         'css'=>'superadmin/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
         'script'=>'superadmin/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'superadmin/akun/create_action',
-        'titlePage'=>'{nama halaman}'
+        'titlePage'=>'Tambah Superadmin'
        );
       $this->template->load($data);
     }
@@ -59,7 +59,7 @@ class Akun extends MY_Controller
         'script'=>'superadmin/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'superadmin/akun/update_action',
         'dataedit'=>$dataedit,
-        'titlePage'=>'{nama halaman}'
+        'titlePage'=>'Edit Akun Superamdin'
        );
       $this->template->load($data);
     }
