@@ -29,7 +29,7 @@ class Resetpassword extends MY_Controller{
     $cek=$cekemailuser->num_rows();
     $cek2=$cekemailuser2->num_rows();
 
-    if ($cek>0) {
+    if ($cek>0) {// kondisi ini untuk mengecek apakah email ada di database atau tidak dan mengupdate password
         $get=$cekemailuser->row();
         $data=array(
           'password' => md5($psw)
