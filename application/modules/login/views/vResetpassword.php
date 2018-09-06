@@ -40,18 +40,23 @@
         <div class="login-register" style="background-image:url(<?php echo base_url() ?>/assets/images/background/login-register.jpg);">        
             <div class="login-box card">
             <div class="card-body">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form class="form-horizontal form-material" id="loginform" method="POST" action="<?php echo base_url()."login/Resetpassword/resetPass_act" ?>">
                     <h3 class="box-title m-b-20">Recover Password</h3>
                     <h4 id="txtPsw1" class="box-title m-b-20">Password Tidak Sama</h4>
                     <h4 id="txtPsw2" class="box-title m-b-20">Password Sama</h4>
                     <div class="form-group ">
                       <div class="col-xs-12">
-                        <input id="psw1" class="form-control" type="Password" required="" placeholder="Masukan Password Baru">
+                        <input id="psw1" class="form-control" type="Password" name="psw1" required="" placeholder="Masukan Password Baru">
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-12">
-                        <input id="psw2" class="form-control" type="Password" required="" placeholder="Masukan Ulang Password ">
+                        <input id="psw2" class="form-control" type="Password" name="psw2" required="" placeholder="Masukan Ulang Password ">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-12">
+                        <input id="email" class="form-control" type="text" name="email" required="" value="<?php echo  $email ?>">
                       </div>
                     </div>
                     <div class="form-group text-center m-t-20">
