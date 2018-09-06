@@ -9,6 +9,7 @@ class Chatbot extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Chatbot_model');
+        $this->load->model('Admin_model');
         $this->load->library('form_validation');
         if($this->session->userdata('status')!='login'){//cek kalo status tidak login
           redirect(base_url('login'));
@@ -39,12 +40,15 @@ class Chatbot extends MY_Controller
 
 
     public function create(){
+      $dataadmin = $this->Admin_model->get_all();
+
       $data = array(
         'contain_view' => 'superadmin/chatbot/chatbot_form',
         'sidebar'=>'superadmin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
         'css'=>'superadmin/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
         'script'=>'superadmin/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'superadmin/chatbot/create_action',
+        'dataadmin' => $dataadmin,
         'titlePage'=>'{nama halaman}'
        );
       $this->template->load($data);
@@ -52,12 +56,16 @@ class Chatbot extends MY_Controller
 
     public function edit($id){
       $dataedit=$this->Chatbot_model->get_by_id($id);
+      $dataadmin = $this->Admin_model->get_all();
+      $datasuperadmin = $this->Admin_model->get_all_superadmin();
       $data = array(
         'contain_view' => 'superadmin/chatbot/chatbot_edit',
         'sidebar'=>'superadmin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
         'css'=>'superadmin/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
         'script'=>'superadmin/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'superadmin/chatbot/update_action',
+        'dataadmin' => $dataadmin,
+        'datasuperadmin' => $datasuperadmin,
         'dataedit'=>$dataedit,
         'titlePage'=>'{nama halaman}'
        );
@@ -73,12 +81,12 @@ class Chatbot extends MY_Controller
             $this->create();
         } else {
             $data = array(
-		'name' => $this->input->post('name',TRUE),
-		'access_token' => $this->input->post('access_token',TRUE),
-		'secret_token' => $this->input->post('secret_token',TRUE),
-		'expire_token' => $this->input->post('expire_token',TRUE),
-		'id_admin' => $this->input->post('id_admin',TRUE),
-		'id_superadmin' => $this->session->userdata('id'),//ngambil id superadmin dari session
+        		'name' => $this->input->post('name',TRUE),
+        		'access_token' => $this->input->post('access_token',TRUE),
+        		'secret_token' => $this->input->post('secret_token',TRUE),
+        		'expire_token' => $this->input->post('expire_token',TRUE),
+        		'id_admin' => $this->input->post('id_admin',TRUE),
+        		'id_superadmin' => $this->session->userdata('id'),//ngambil id superadmin dari session
 	    );
 
             $this->Chatbot_model->insert($data);
@@ -127,14 +135,14 @@ class Chatbot extends MY_Controller
 
     public function _rules()
     {
-	$this->form_validation->set_rules('name', 'name', 'trim|required');
-	$this->form_validation->set_rules('access_token', 'access token', 'trim|required');
-	$this->form_validation->set_rules('secret_token', 'secret token', 'trim|required');
-	$this->form_validation->set_rules('expire_token', 'expire token', 'trim|required');
-	$this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
+    	$this->form_validation->set_rules('name', 'name', 'trim|required');
+    	$this->form_validation->set_rules('access_token', 'access token', 'trim|required');
+    	$this->form_validation->set_rules('secret_token', 'secret token', 'trim|required');
+    	$this->form_validation->set_rules('expire_token', 'expire token', 'trim|required');
+    	$this->form_validation->set_rules('id_admin', 'id admin', 'trim|required');
 
-	$this->form_validation->set_rules('id_chatbot', 'id_chatbot', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    	$this->form_validation->set_rules('id_chatbot', 'id_chatbot', 'trim');
+    	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
 }
