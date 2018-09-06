@@ -23,17 +23,16 @@ class Resetpassword extends MY_Controller{
 
   function resetPass_act(){
     $email=$this->input->post('email');
-    $psw2=$this->input->post('psw2');
+    $psw=$this->input->post('psw2');
     $cekemailuser = $this->Dbs->getEmailuser("superadmin",$email);
     $cekemailuser2 = $this->Dbs->getEmailuser("admin",$email);
     $cek=$cekemailuser->num_rows();
     $cek2=$cekemailuser2->num_rows();
-    
 
     if ($cek>0) {
         $get=$cekemailuser->row();
         $data=array(
-          'password' => md5($psw2)
+          'password' => md5($psw)
         );
         $this->Dbs->ubahpasswordUser('superadmin',$email,$data);
         redirect(base_url('login'));
@@ -41,7 +40,7 @@ class Resetpassword extends MY_Controller{
     } else if ($cek2>0) {
         $get=$cekemailuser2->row();
         $data=array(
-          'password' => md5($psw2)
+          'password' => md5($psw)
         );
         $this->Dbs->ubahpasswordUser('admin',$email,$data);
         redirect(base_url('login'));
