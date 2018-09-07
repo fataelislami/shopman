@@ -116,6 +116,13 @@ $this->email->send();
 
   function lupaPassword_act(){//fungsi ini untuk mengirim email dan memberi random link untuk update password
     $email = $this->input->post('email');
+    $length=20;
+    $rand = $this->randomPassword($length);
+    // $data['random'] = $rand;
+    $data = array(
+        'email' => $email,
+        'random' => $rand
+    );
     $cekemailuser = $this->Dbs->getEmailuser("superadmin",$email);
     $cekemailuser2 = $this->Dbs->getEmailuser("admin",$email);
     $cek=$cekemailuser->num_rows();
@@ -123,25 +130,23 @@ $this->email->send();
 
     if ($cek>0) {//kondisi ini untuk mengecek email di database dan mengirim email 
         $get=$cekemailuser->row();
-        // $length=8;
-        // $passwordBaru = $this->randomPassword($length);
-        // $data['password'] = md5($passwordBaru);
-        $href='http://localhost/shopman/login/Resetpassword?email='.$email;
+        $url=base_url();
+        $href=$url.'/login/Resetpassword?rand='.$rand;
         $message='HALOO SAYANGG '.$cek->username.',<br><br> Tolong klik link dibawah untuk aktifasi account anda!<br><br>
                  <a href=\''.$href.'\'>VERIFIKASI</a><br><br>Thanks';
         $this->email("Info Akun",$message,$email);
+        $this->Dbs->insert($data,'random_link');
         $this->session->set_flashdata('flashMessage', 'Password baru telah terkirim,silahkan cek email anda');
         redirect(base_url('login'));
 
     } else if ($cek2>0) {
         $get=$cekemailuser2->row();
-        // $length=8;
-        // $passwordBaru = $this->randomPassword($length);
-        // $data['password'] = md5($passwordBaru);
-        $href='http://localhost/shopman/login/Resetpassword?email='.$email;
+        $url=base_url();
+        $href=$url.'/login/Resetpassword?rand='.$rand;
         $message='HALOO SAYANGG '.$cek2->username.',<br><br> Tolong klik link dibawah untuk aktifasi account anda!<br><br>
                  <a href=\''.$href.'\'>VERIFIKASI</a><br><br>Thanks';
         $this->email("Info Akun",$message,$email);
+        $this->Dbs->insert($data,'random_link');
         $this->session->set_flashdata('flashMessage', 'Password baru telah terkirim,silahkan cek email anda');
         redirect(base_url('login'));
     } else {

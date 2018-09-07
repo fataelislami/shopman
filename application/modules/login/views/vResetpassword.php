@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                       <div class="col-xs-12">
-                        <input id="email" class="form-control" type="text" name="email" required="" value="<?php echo  $email ?>">
+                        <input id="rand" class="form-control" type="text" name="rand" required="" value="<?php echo  $rand ?>">
                       </div>
                     </div>
                     <div class="form-group text-center m-t-20">

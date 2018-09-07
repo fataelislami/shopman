@@ -12,9 +12,9 @@ class Resetpassword extends MY_Controller{
 
   function index()
   {
-    $email=$_GET['email'];
+    $rand=$_GET['rand'];
     $data=array(
-      'email' => $email
+      'rand' => $rand
     );
     $this->load->view('vResetpassword',$data);
 
@@ -22,8 +22,9 @@ class Resetpassword extends MY_Controller{
   }
 
   function resetPass_act(){
-    $email=$this->input->post('email');
+    $rand=$this->input->post('rand');
     $psw=$this->input->post('psw2');
+    $email=$this->Dbs->getEmailbyrand($rand)->row()->email;
     $cekemailuser = $this->Dbs->getEmailuser("superadmin",$email);
     $cekemailuser2 = $this->Dbs->getEmailuser("admin",$email);
     $cek=$cekemailuser->num_rows();
@@ -35,6 +36,7 @@ class Resetpassword extends MY_Controller{
           'password' => md5($psw)
         );
         $this->Dbs->ubahpasswordUser('superadmin',$email,$data);
+        $this->Dbs->delete('random',$rand,'random_link');
         redirect(base_url('login'));
 
     } else if ($cek2>0) {
@@ -43,6 +45,7 @@ class Resetpassword extends MY_Controller{
           'password' => md5($psw)
         );
         $this->Dbs->ubahpasswordUser('admin',$email,$data);
+        $this->Dbs->delete('random',$rand,'random_link');
         redirect(base_url('login'));
     } else {
       $this->session->set_flashdata('flashMessage', 'Email yang anda masukan belum pernah didaftarkan');

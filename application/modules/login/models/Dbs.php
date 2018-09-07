@@ -24,4 +24,26 @@ class Dbs extends CI_Model{
         $this->db->where('email', $email);
         $this->db->update($table);
     }
+
+  function getEmailbyrand($rand){
+      $dml="SELECT email FROM random_link where random='$rand'";
+      $query=$this->db->query($dml);
+      return $query;
+  }  
+
+  function insert($data,$table){
+   $insert = $this->db->insert($table, $data);
+   if ($this->db->affected_rows()>0) {
+     return true;
+     }else{
+     return false;
+     }
+ }
+
+     function delete($where,$value,$table)
+    {
+        $this->db->where($where, $value);
+        $this->db->delete($table);
+    } 
+
 }
