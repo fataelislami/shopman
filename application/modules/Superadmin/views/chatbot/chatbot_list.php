@@ -17,18 +17,22 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <?php foreach ($datafield as $d): ?>
-                                  <th><?php echo str_replace("_"," ",$d) ?></th>
-                                <?php endforeach; ?>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Expire Token</th>
+                                <th>Admin</th>
+                                <th>Superadmin</th>
                                 <th>aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                           <?php foreach ($datachatbot as $d): ?>
                             <tr>
-                              <?php foreach ($datafield as $df): ?>
-                                <td><?php echo $d->$df ?></td>
-                              <?php endforeach; ?>
+                                <td><?php echo $d->id_chatbot ?></td>
+                                <td><?php echo $d->name ?></td>
+                                <td><?php echo $d->expire_token ?></td>
+                                <td><?php echo $d->admin ?></td>
+                                <td><?php echo $d->superadmin ?></td>
                                 <td>
                                 <a href="<?php echo base_url().$module?>/chatbot/edit/<?php echo $d->id_chatbot ?>">
                                         <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>

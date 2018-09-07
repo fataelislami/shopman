@@ -18,8 +18,14 @@ class Chatbot_model extends CI_Model
     // get all
     function get_all()
     {
+        $this->db->select('chatbot.*');
+        $this->db->select('admin.name as admin');
+        $this->db->select('superadmin.name as superadmin');
+        $this->db->from('chatbot');
+        $this->db->join('admin','admin.id_admin = chatbot.id_admin');
+        $this->db->join('superadmin','superadmin.id_superadmin = chatbot.id_superadmin');
         $this->db->order_by($this->id, $this->order);
-        return $this->db->get($this->table)->result();
+        return $this->db->get()->result();
     }
 
     //get field
