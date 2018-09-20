@@ -23,10 +23,15 @@
         <!-- //BATAS SATU MENU -->
         <!-- //BATAS SATU MENU -->
         <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/invoice"><i class="mdi mdi-wunderlist"></i><span class="hide-menu">Invoice</span></a>
+        </li>
+        <!-- //BATAS SATU MENU -->
+        <!-- //BATAS SATU MENU -->
+        <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/confirmation"><i class="mdi mdi-ticket-confirmation"></i><span class="hide-menu">Confirm</span></a>
         </li>
         <!-- //BATAS SATU MENU -->
-        
+
         <!-- <li>
         CONTOH MENU DENGAN SUBMENU
             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-pencil"></i><span class="hide-menu">Tulisan</span></a>

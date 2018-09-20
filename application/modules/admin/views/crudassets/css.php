@@ -1,7 +1,8 @@
 <link href="<?php echo base_url()?>assets/plugins/summernote/dist/summernote.css" rel="stylesheet" />
 <link href="<?php echo base_url()?>assets/plugins/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>assets/plugins/wizard/steps.css" rel="stylesheet">
+<link href="<?php echo base_url()?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
-  <link href="<?php echo base_url()?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
   <style>
 
 #myImg {
